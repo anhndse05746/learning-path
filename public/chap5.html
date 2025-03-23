@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Step 5: Deepen DevOps & Deployment Knowledge</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #2980b9;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      h2:hover {
+        color: #3498db;
+      }
+      h3 {
+        color: #7f8c8d;
+      }
+      p,
+      ul {
+        margin: 10px 0;
+      }
+      code {
+        background-color: #f0f0f0;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9em;
+        color: #e83e8c;
+      }
+      pre {
+        background-color: #282c34;
+        color: #abb2bf;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 15px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+      pre code {
+        background-color: transparent;
+        padding: 0;
+        color: inherit;
+        font-size: inherit;
+        border-radius: 0;
+      }
+      .section {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .collapsible {
+        display: none;
+      }
+      .collapsible.active {
+        display: block;
+      }
+      a {
+        color: #3498db;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Step 5: Deepen DevOps & Deployment Knowledge</h1>
+
+    <div class="section">
+      <h2>Goal</h2>
+      <p>
+        Own the full lifecycle of a backend app, from development to deployment
+        and monitoring.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Duration</h2>
+      <p>4 weeks (assuming 2-3 hours/day, 5 days/week)</p>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Theory (What to Learn)</h2>
+      <div class="collapsible">
+        <ol>
+          <li>
+            <strong>CI/CD Pipelines</strong>
+            <ul>
+              <li>Continuous Integration and Deployment concepts.</li>
+              <li>Tools: GitHub Actions, Jenkins.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Containerization</strong>
+            <ul>
+              <li>
+                Docker basics: Images, containers, <code>Dockerfile</code>.
+              </li>
+              <li>Orchestration with Docker Compose.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Cloud Deployment</strong>
+            <ul>
+              <li>AWS/GCP services (e.g., EC2, S3, Lambda).</li>
+              <li>Serverless architecture.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Monitoring & Logging</strong>
+            <ul>
+              <li>Tools: PM2, New Relic, custom logging.</li>
+              <li>Metrics: CPU, memory, request latency.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Hands-On Practice Plan</h2>
+      <div class="collapsible">
+        <h3>Week 1: Containerization Basics</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://docs.docker.com/get-started/" target="_blank"
+                  >Docker Get Started</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Dockerize an App</strong>
+            <ul>
+              <li>
+                Task: Dockerize a simple Node.js API (e.g., from Step 2). Run it
+                locally.
+              </li>
+              <li>
+                Example <code>Dockerfile</code>:
+                <pre><code>FROM node:16
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+CMD ["node", "index.js"]</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Docker Compose</strong>
+            <ul>
+              <li>
+                Task: Use <code>docker-compose.yml</code> to run your API with a
+                MongoDB container.
+              </li>
+              <li>
+                Example:
+                <pre><code>version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"</code></pre>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 2: CI/CD Setup</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://docs.github.com/en/actions" target="_blank"
+                  >GitHub Actions Docs</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Basic Pipeline</strong>
+            <ul>
+              <li>
+                Task: Set up a GitHub Actions workflow to run tests on push.
+              </li>
+              <li>
+                Example <code>.github/workflows/test.yml</code>:
+                <pre><code>name: Test
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm install
+      - run: npm test</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Deploy Pipeline</strong>
+            <ul>
+              <li>
+                Task: Extend the pipeline to build and deploy your Docker image
+                to a registry (e.g., Docker Hub).
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 3: Cloud Deployment</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a
+                  href="https://aws.amazon.com/getting-started/"
+                  target="_blank"
+                  >AWS Getting Started</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - AWS EC2</strong>
+            <ul>
+              <li>
+                Task: Deploy your Dockerized app to an AWS EC2 instance using
+                SSH and Docker.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Serverless</strong>
+            <ul>
+              <li>
+                Task: Deploy a simple Node.js function (e.g., API endpoint) to
+                AWS Lambda.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 4: Monitoring & Optimization</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a
+                  href="https://pm2.keymetrics.io/docs/usage/monitoring/"
+                  target="_blank"
+                  >PM2 Monitoring Docs</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - PM2 Setup</strong>
+            <ul>
+              <li>
+                Task: Run your app with PM2, enable monitoring, and restart on
+                crash.
+              </li>
+              <li>
+                Example:
+                <pre><code>pm2 start index.js --watch</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Custom Logging</strong>
+            <ul>
+              <li>
+                Task: Add Winston or a custom logger to your app. Log requests
+                and errors to a file.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Milestones</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            <strong>End of Week 2:</strong> Automate testing and deployment with
+            CI/CD.
+          </li>
+          <li>
+            <strong>End of Week 4:</strong> Deploy and monitor a
+            production-ready app.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Resources</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            <a href="https://docs.docker.com/" target="_blank"
+              >Docker Documentation</a
+            >
+          </li>
+          <li>
+            <a href="https://aws.amazon.com/free/" target="_blank"
+              >AWS Free Tier</a
+            >
+          </li>
+          <li>YouTube: “TechWorld with Nana” DevOps tutorials</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      function toggleSection(element) {
+        const content = element.nextElementSibling;
+        content.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

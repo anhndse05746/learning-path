@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top 10 Problems for Senior Node.js Developers</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #2980b9;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      h2:hover {
+        color: #3498db;
+      }
+      h3 {
+        color: #7f8c8d;
+      }
+      p,
+      ul {
+        margin: 10px 0;
+      }
+      code {
+        background-color: #f0f0f0;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9em;
+        color: #e83e8c;
+      }
+      pre {
+        background-color: #282c34;
+        color: #abb2bf;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 15px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+      pre code {
+        background-color: transparent;
+        padding: 0;
+        color: inherit;
+        font-size: inherit;
+        border-radius: 0;
+      }
+      .section {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .collapsible {
+        display: none;
+      }
+      .collapsible.active {
+        display: block;
+      }
+      a {
+        color: #3498db;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Top 10 Problems Commonly Asked of a Senior Node.js Developer</h1>
+
+    <div class="section">
+      <h2>Introduction</h2>
+      <p>
+        These problems test advanced technical knowledge, problem-solving,
+        system design, and real-world experience expected of a senior Node.js
+        developer.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Problems</h2>
+      <div class="collapsible">
+        <ol>
+          <li>
+            <strong>Design a Scalable RESTful API</strong>
+            <ul>
+              <li>
+                <strong>Problem:</strong> Design a Node.js-based API (e.g., for
+                a social media app) that handles 1 million requests/day,
+                including authentication, rate limiting, and caching.
+              </li>
+              <li>
+                <strong>Key Skills:</strong> System design, Express.js, Redis,
+                JWT, scalability.
+              </li>
+              <li>
+                <strong>Why Asked:</strong> Tests ability to architect
+                production-ready systems.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Implement a Rate Limiter</strong>
+            <ul>
+              <li>
+                <strong>Problem:</strong> Build a middleware in Node.js to limit
+                each IP to 100 requests per hour without using external
+                libraries.
+              </li>
+              <li>
+                <strong>Key Skills:</strong> Node.js internals, in-memory
+                storage, middleware design.
+              </li>
+              <li>
+                <strong>Why Asked:</strong> Evaluates understanding of
+                performance and resource management.
+              </li>
+              <li>
+                <strong>Example:</strong>
+                <pre><code>const rateLimit = {};
+function limiter(req, res, next) {
+  const ip = req.ip;
+  const now = Date.now();
+  if (!rateLimit[ip]) rateLimit[ip] = { count: 0, start: now };
+  if (now - rateLimit[ip].start > 3600000) rateLimit[ip] = { count: 0, start: now };
+  if (rateLimit[ip].count >= 100) return res.status(429).send('Too Many Requests');
+  rateLimit[ip].count++;
+  next();
+}</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Optimize a Slow Endpoint</strong>
+            <ul>
+              <li>
+                <strong>Problem:</strong> Given a slow API endpoint (e.g.,
+                fetching 10k database records), identify bottlenecks and
+                optimize it using profiling tools and techniques.
+              </li>
+              <li>
+                <strong>Key Skills:</strong> Debugging, profiling (e.g.,
+                <code>clinic.js</code>), database optimization.
+              </li>
+              <li>
+                <strong>Why Asked:</strong> Assesses troubleshooting and
+                optimization skills under pressure.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Handle Concurrent Requests</strong>
+            <ul>
+              <li>
+                <strong>Problem:</strong> Write a Node.js script to process
+                1,000 concurrent file uploads without crashing, managing
+                backpressure and memory usage.
+              </li>
+              <li>
+                <strong>Key Skills:</strong> Streams, event loop, Worker
+                Threads.
+              </li>
+              <li>
+                <strong>Why Asked:</strong> Tests mastery of Node.js concurrency
+                and resource handling.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Design a Microservices Architecture</strong>
+            <ul>
+              <li>
+                <strong>Problem:</strong> Architect a Node.js microservices
+                system (e.g., auth, user, payment services) with communication
+                via message queues and deployment strategy.
+              </li>
+              <li>
+                <strong>Key Skills:</strong> Microservices, RabbitMQ/Kafka,
+                Docker, system design.
+              </li>
+              <li>
+                <strong>Why Asked:</strong> Gauges ability to break down
+                monoliths and scale distributed systems.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Debug a Memory Leak</strong>
+            <ul>
+              <li>
+                <strong>Problem:</strong> Given a Node.js app with a memory leak
+                (e.g., growing array in a loop), use tools to identify and fix
+                it.
+              </li>
+              <li>
+                <strong>Key Skills:</strong> Debugging,
+                <code>node --inspect</code>, memory profiling.
+              </li>
+              <li>
+                <strong>Why Asked:</strong> Ensures capability to maintain
+                long-running applications.
+              </li>
+              <li>
+                <strong>Example (Leaky):</strong>
+                <pre><code>let arr = [];
+setInterval(() => arr.push(new Array(10000).fill('leak')), 1000);</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Implement Authentication & Authorization</strong>
+            <ul>
+              <li>
+                <strong>Problem:</strong> Build a secure Node.js API with
+                JWT-based authentication and role-based authorization (e.g.,
+                admin vs. user roles).
+              </li>
+              <li>
+                <strong>Key Skills:</strong> Security, JWT, middleware,
+                TypeScript (optional).
+              </li>
+              <li>
+                <strong>Why Asked:</strong> Tests knowledge of securing
+                applications, a critical senior skill.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Scale a Node.js App with Clustering</strong>
+            <ul>
+              <li>
+                <strong>Problem:</strong> Use the <code>cluster</code> module to
+                scale a Node.js app across multiple CPU cores, handling 10k
+                requests/second.
+              </li>
+              <li>
+                <strong>Key Skills:</strong> Clustering, load balancing,
+                performance testing (e.g., <code>autocannon</code>).
+              </li>
+              <li>
+                <strong>Why Asked:</strong> Assesses understanding of Node.js
+                scalability limits.
+              </li>
+              <li>
+                <strong>Example:</strong>
+                <pre><code>const cluster = require('cluster');
+const http = require('http');
+const numCPUs = require('os').cpus().length;
+if (cluster.isMaster) {
+  for (let i = 0; i < numCPUs; i++) cluster.fork();
+} else {
+  http.createServer((req, res) => res.end('Hello')).listen(3000);
+}</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Write a Test Suite for an API</strong>
+            <ul>
+              <li>
+                <strong>Problem:</strong> Create a comprehensive test suite
+                (unit, integration, E2E) for a Node.js API, achieving 80%+
+                coverage.
+              </li>
+              <li>
+                <strong>Key Skills:</strong> Jest, Supertest, TDD, mocking.
+              </li>
+              <li>
+                <strong>Why Asked:</strong> Verifies ability to ensure code
+                reliability and maintainability.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Handle a Production Outage</strong>
+            <ul>
+              <li>
+                <strong>Problem:</strong> Simulate a production issue (e.g.,
+                database crash, high latency) in a Node.js app. Diagnose and
+                implement a fix with monitoring.
+              </li>
+              <li>
+                <strong>Key Skills:</strong> Monitoring (PM2, logs), resilience
+                (retries), problem-solving.
+              </li>
+              <li>
+                <strong>Why Asked:</strong> Tests real-world experience and
+                crisis management.
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">How to Practice</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            <strong>Coding:</strong> Solve these in Node.js, focusing on clean,
+            efficient code.
+          </li>
+          <li>
+            <strong>Theory:</strong> Explain your approach aloud or in writing
+            (e.g., trade-offs, complexity).
+          </li>
+          <li>
+            <strong>Tools:</strong> Use debuggers, profilers, and testing
+            frameworks as needed.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      function toggleSection(element) {
+        const content = element.nextElementSibling;
+        content.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

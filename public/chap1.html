@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Step 1: Strengthen Core Node.js Skills</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #2980b9;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      h2:hover {
+        color: #3498db;
+      }
+      h3 {
+        color: #7f8c8d;
+      }
+      p,
+      ul {
+        margin: 10px 0;
+      }
+      code {
+        background-color: #f0f0f0;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9em;
+        color: #e83e8c;
+      }
+      pre {
+        background-color: #282c34;
+        color: #abb2bf;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 15px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+      pre code {
+        background-color: transparent;
+        padding: 0;
+        color: inherit;
+        font-size: inherit;
+        border-radius: 0;
+      }
+      .section {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .collapsible {
+        display: none;
+      }
+      .collapsible.active {
+        display: block;
+      }
+      a {
+        color: #3498db;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Step 1: Strengthen Core Node.js Skills</h1>
+
+    <div class="section">
+      <h2>Goal</h2>
+      <p>
+        Master Node.js internals and advanced programming patterns to build
+        efficient, low-level solutions.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Duration</h2>
+      <p>4 weeks (assuming 2-3 hours/day, 5 days/week)</p>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Theory (What to Learn)</h2>
+      <div class="collapsible">
+        <ol>
+          <li>
+            <strong>Event Loop & Asynchronous Programming</strong>
+            <ul>
+              <li>How Node.js handles single-threaded, non-blocking I/O.</li>
+              <li>
+                Phases of the event loop: timers, pending callbacks,
+                idle/prepare, poll, check, close.
+              </li>
+              <li>
+                Difference between <code>setTimeout</code>,
+                <code>setImmediate</code>, and <code>process.nextTick</code>.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Streams</strong>
+            <ul>
+              <li>Types: Readable, Writable, Duplex, Transform.</li>
+              <li>Use cases: File handling, HTTP requests, data processing.</li>
+              <li>Backpressure and piping.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>EventEmitter</strong>
+            <ul>
+              <li>Core of Node.js event-driven architecture.</li>
+              <li>Creating custom events and listeners.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Buffers</strong>
+            <ul>
+              <li>Handling raw binary data.</li>
+              <li>Common operations: slicing, concatenating, encoding.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Process & Performance</strong>
+            <ul>
+              <li>
+                Global <code>process</code> object (e.g.,
+                <code>process.env</code>, <code>process.exit</code>).
+              </li>
+              <li>Memory usage and optimization.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Hands-On Practice Plan</h2>
+      <div class="collapsible">
+        <h3>Week 1: Event Loop & Async Basics</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a
+                  href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/"
+                  target="_blank"
+                  >Node.js docs - The Node.js Event Loop</a
+                >
+              </li>
+              <li>
+                Watch: "What the heck is the event loop anyway?" by Philip
+                Roberts (YouTube)
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2: Exercise 1 - Async Order</strong>
+            <ul>
+              <li>
+                Task: Write a script that logs messages using
+                <code>setTimeout</code>, <code>setImmediate</code>, and
+                <code>process.nextTick</code> in different orders. Predict and
+                verify the output.
+              </li>
+              <li>
+                Example:
+                <pre><code>console.log('Start');
+setTimeout(() => console.log('Timeout'), 0);
+process.nextTick(() => console.log('NextTick'));
+setImmediate(() => console.log('Immediate'));
+console.log('End');</code></pre>
+              </li>
+              <li>Goal: Understand execution order.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 3-4: Exercise 2 - Promise Chain</strong>
+            <ul>
+              <li>
+                Task: Create a chain of 5 async operations (e.g., fetch user
+                data, process it, save to file) using Promises and async/await.
+                Handle errors with try/catch.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 5: Review</strong>
+            <ul>
+              <li>
+                Explain the event loop to yourself or a peer. Debug any issues
+                from exercises.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 2: Streams</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://nodejs.org/api/stream.html" target="_blank"
+                  >Node.js docs - Streams</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2: Exercise 1 - File Reader</strong>
+            <ul>
+              <li>
+                Task: Write a script to read a large text file (e.g., 100MB)
+                using a Readable stream and log its contents line-by-line.
+              </li>
+              <li>Use: <code>fs.createReadStream</code>.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 3-4: Exercise 2 - File Transformer</strong>
+            <ul>
+              <li>
+                Task: Create a Transform stream that converts text to uppercase
+                and pipes it from a source file to a new file.
+              </li>
+              <li>
+                Example:
+                <pre><code>const { Transform } = require('stream');
+const fs = require('fs');
+const upperCaseTransform = new Transform({
+  transform(chunk, encoding, callback) {
+    this.push(chunk.toString().toUpperCase());
+    callback();
+  }
+});
+fs.createReadStream('input.txt')
+  .pipe(upperCaseTransform)
+  .pipe(fs.createWriteStream('output.txt'));</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 5: Review</strong>
+            <ul>
+              <li>
+                Test with a large file and monitor memory usage (use
+                <code>process.memoryUsage()</code>).
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 3: EventEmitter & Buffers</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://nodejs.org/api/events.html" target="_blank"
+                  >Node.js docs - Events</a
+                >
+                and
+                <a href="https://nodejs.org/api/buffer.html" target="_blank"
+                  >Buffer</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2: Exercise 1 - Custom Event System</strong>
+            <ul>
+              <li>
+                Task: Build a simple pub/sub system using
+                <code>EventEmitter</code>. Example: Emit a "userLoggedIn" event
+                and log a message when it's triggered.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 3-4: Exercise 2 - Buffer Manipulation</strong>
+            <ul>
+              <li>
+                Task: Write a script that reads a binary file (e.g., an image),
+                slices the buffer, and saves a portion to a new file.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 5: Review</strong>
+            <ul>
+              <li>
+                Combine EventEmitter and Buffers: Emit an event when a buffer
+                operation completes.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 4: Process & Optimization</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://nodejs.org/api/process.html" target="_blank"
+                  >Node.js docs - Process</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2: Exercise 1 - Environment Config</strong>
+            <ul>
+              <li>
+                Task: Create a script that loads config from
+                <code>process.env</code> (use <code>dotenv</code>) and exits
+                with an error if a required variable is missing.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 3-4: Exercise 2 - Performance Test</strong>
+            <ul>
+              <li>
+                Task: Write a CPU-intensive function (e.g., calculate Fibonacci
+                numbers) and optimize it by offloading to a Worker Thread.
+              </li>
+              <li>
+                Example:
+                <pre><code>const { Worker } = require('worker_threads');
+const worker = new Worker('./fib-worker.js', { workerData: 40 });
+worker.on('message', (result) => console.log(result));</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 5: Review</strong>
+            <ul>
+              <li>
+                Measure execution time with <code>console.time()</code> and
+                improve your solution.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Milestones</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            <strong>End of Week 2:</strong> Comfortably handle async operations
+            and streams without external libraries.
+          </li>
+          <li>
+            <strong>End of Week 4:</strong> Build a small app (e.g., a file
+            processor) using only Node.js core modules.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Resources</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            Node.js official docs (<a
+              href="https://nodejs.org/api/"
+              target="_blank"
+              >https://nodejs.org/api/</a
+            >)
+          </li>
+          <li>Book: <em>Node.js Design Patterns</em> (Chapter 1-3)</li>
+          <li>Video: "Node.js Internals" by Bert Belder (YouTube)</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      function toggleSection(element) {
+        const content = element.nextElementSibling;
+        content.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

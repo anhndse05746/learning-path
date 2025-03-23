@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Step 2: Master System Design</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #2980b9;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      h2:hover {
+        color: #3498db;
+      }
+      h3 {
+        color: #7f8c8d;
+      }
+      p,
+      ul {
+        margin: 10px 0;
+      }
+      code {
+        background-color: #f0f0f0;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9em;
+        color: #e83e8c;
+      }
+      pre {
+        background-color: #282c34;
+        color: #abb2bf;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 15px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+      pre code {
+        background-color: transparent;
+        padding: 0;
+        color: inherit;
+        font-size: inherit;
+        border-radius: 0;
+      }
+      .section {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .collapsible {
+        display: none;
+      }
+      .collapsible.active {
+        display: block;
+      }
+      a {
+        color: #3498db;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Step 2: Master System Design</h1>
+
+    <div class="section">
+      <h2>Goal</h2>
+      <p>Design scalable, maintainable systems for real-world applications.</p>
+    </div>
+
+    <div class="section">
+      <h2>Duration</h2>
+      <p>4 weeks (assuming 2-3 hours/day, 5 days/week)</p>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Theory (What to Learn)</h2>
+      <div class="collapsible">
+        <ol>
+          <li>
+            <strong>Fundamentals of System Design</strong>
+            <ul>
+              <li>Scalability: Horizontal vs. vertical scaling.</li>
+              <li>Load balancing and caching strategies.</li>
+              <li>Monolithic vs. microservices architecture.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Distributed Systems</strong>
+            <ul>
+              <li>Concepts: CAP theorem, consistency, availability.</li>
+              <li>Message queues (e.g., RabbitMQ, Kafka).</li>
+              <li>Database sharding and replication.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Node.js-Specific Design</strong>
+            <ul>
+              <li>Event-driven architecture in distributed systems.</li>
+              <li>Clustering and Worker Threads for scalability.</li>
+              <li>Handling high concurrency with Node.js.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Tools & Technologies</strong>
+            <ul>
+              <li>Redis for caching.</li>
+              <li>Docker for containerization.</li>
+              <li>AWS/GCP basics (e.g., EC2, S3).</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Hands-On Practice Plan</h2>
+      <div class="collapsible">
+        <h3>Week 1: Fundamentals & Monolith Design</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a
+                  href="https://www.educative.io/courses/grokking-the-system-design-interview"
+                  target="_blank"
+                  >Grokking the System Design Interview (Intro)</a
+                >
+              </li>
+              <li>Watch: “System Design Basics” by Tech With Tim (YouTube)</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Monolith API</strong>
+            <ul>
+              <li>
+                Task: Build a monolithic Node.js API (e.g., User Management)
+                with Express, MongoDB, and basic caching (in-memory).
+              </li>
+              <li>
+                Endpoints: <code>POST /users</code>, <code>GET /users</code>.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Load Testing</strong>
+            <ul>
+              <li>
+                Task: Use <code>autocannon</code> or
+                <code>Apache Benchmark</code> to test your API under 100
+                concurrent requests. Optimize bottlenecks (e.g., slow DB
+                queries).
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 2: Caching & Scaling</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://redis.io/documentation" target="_blank"
+                  >Redis Documentation (Basics)</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Add Redis</strong>
+            <ul>
+              <li>
+                Task: Integrate Redis into your API to cache
+                <code>GET /users</code> results. Compare response times before
+                and after.
+              </li>
+              <li>
+                Example:
+                <pre><code>const redis = require('redis');
+const client = redis.createClient();
+app.get('/users', async (req, res) => {
+  const cached = await client.get('users');
+  if (cached) return res.json(JSON.parse(cached));
+  const users = await User.find();
+  await client.setEx('users', 3600, JSON.stringify(users));
+  res.json(users);
+});</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Clustering</strong>
+            <ul>
+              <li>
+                Task: Use Node.js <code>cluster</code> module to scale your API
+                across multiple CPU cores. Test with <code>autocannon</code>.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 3: Microservices Basics</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://microservices.io/" target="_blank"
+                  >Microservices.io (Patterns)</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Split Services</strong>
+            <ul>
+              <li>
+                Task: Split your monolith into two services: Auth
+                (login/register) and Users (CRUD). Use HTTP calls between them.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Message Queue</strong>
+            <ul>
+              <li>
+                Task: Replace HTTP with RabbitMQ for async communication (e.g.,
+                send user creation events).
+              </li>
+              <li>
+                Example:
+                <pre><code>const amqp = require('amqplib');
+async function publish() {
+  const conn = await amqp.connect('amqp://localhost');
+  const ch = await conn.createChannel();
+  await ch.assertQueue('user_events');
+  ch.sendToQueue('user_events', Buffer.from('New user created'));
+}</code></pre>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 4: Containerization & Deployment</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://docs.docker.com/get-started/" target="_blank"
+                  >Docker Get Started</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Dockerize</strong>
+            <ul>
+              <li>
+                Task: Create a <code>Dockerfile</code> for your microservices
+                and run them locally with <code>docker-compose</code>.
+              </li>
+              <li>
+                Example <code>Dockerfile</code>:
+                <pre><code>FROM node:16
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+CMD ["node", "index.js"]</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Deploy</strong>
+            <ul>
+              <li>
+                Task: Deploy your Dockerized app to a free tier (e.g., Heroku,
+                AWS EC2). Monitor with logs.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Milestones</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            <strong>End of Week 2:</strong> Optimize a monolith with caching and
+            clustering.
+          </li>
+          <li>
+            <strong>End of Week 4:</strong> Deploy a microservices-based app
+            with Docker.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Resources</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            <a
+              href="https://www.educative.io/courses/grokking-the-system-design-interview"
+              target="_blank"
+              >Grokking the System Design Interview</a
+            >
+          </li>
+          <li>
+            Book: <em>Designing Data-Intensive Applications</em> by Martin
+            Kleppmann (Chapter 1-3)
+          </li>
+          <li>YouTube: “System Design Interview” channel</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      function toggleSection(element) {
+        const content = element.nextElementSibling;
+        content.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

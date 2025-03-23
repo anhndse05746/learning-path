@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Step 7: Simulate Real-World Challenges</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #2980b9;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      h2:hover {
+        color: #3498db;
+      }
+      h3 {
+        color: #7f8c8d;
+      }
+      p,
+      ul {
+        margin: 10px 0;
+      }
+      code {
+        background-color: #f0f0f0;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9em;
+        color: #e83e8c;
+      }
+      pre {
+        background-color: #282c34;
+        color: #abb2bf;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 15px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+      pre code {
+        background-color: transparent;
+        padding: 0;
+        color: inherit;
+        font-size: inherit;
+        border-radius: 0;
+      }
+      .section {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .collapsible {
+        display: none;
+      }
+      .collapsible.active {
+        display: block;
+      }
+      a {
+        color: #3498db;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Step 7: Simulate Real-World Challenges</h1>
+
+    <div class="section">
+      <h2>Goal</h2>
+      <p>
+        Handle senior-level responsibilities by building and troubleshooting
+        complete systems.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Duration</h2>
+      <p>4 weeks (assuming 2-3 hours/day, 5 days/week)</p>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Theory (What to Learn)</h2>
+      <div class="collapsible">
+        <ol>
+          <li>
+            <strong>Project Planning</strong>
+            <ul>
+              <li>Defining requirements and scope.</li>
+              <li>Estimating timelines and resources.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Production Issues</strong>
+            <ul>
+              <li>
+                Common failures: Downtime, bottlenecks, security breaches.
+              </li>
+              <li>Troubleshooting under pressure.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Scalability & Resilience</strong>
+            <ul>
+              <li>Load testing and failure recovery.</li>
+              <li>High-availability setups.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Hands-On Practice Plan</h2>
+      <div class="collapsible">
+        <h3>Week 1: Project Setup</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a
+                  href="https://www.atlassian.com/agile/project-management"
+                  target="_blank"
+                  >Agile Project Management Basics</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Plan a Project</strong>
+            <ul>
+              <li>
+                Task: Design a task management API (auth, CRUD, notifications).
+                Write a spec with endpoints and features.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Initial Build</strong>
+            <ul>
+              <li>
+                Task: Build the core API with Express, MongoDB, and TypeScript.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 2: Add Complexity</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://12factor.net/" target="_blank"
+                  >12 Factor App</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Notifications</strong>
+            <ul>
+              <li>
+                Task: Add async notifications (e.g., email or WebSocket) using a
+                queue (RabbitMQ).
+              </li>
+              <li>
+                Example:
+                <pre><code>const amqp = require('amqplib');
+async function sendNotification(task) {
+  const conn = await amqp.connect('amqp://localhost');
+  const ch = await conn.createChannel();
+  await ch.assertQueue('notifications');
+  ch.sendToQueue('notifications', Buffer.from(JSON.stringify(task)));
+}</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Testing</strong>
+            <ul>
+              <li>Task: Write unit and integration tests with 80% coverage.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 3: Simulate Issues</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a
+                  href="https://nodejs.org/en/docs/guides/diagnostics/"
+                  target="_blank"
+                  >Node.js Diagnostics</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Bottleneck</strong>
+            <ul>
+              <li>
+                Task: Introduce a slow DB query. Use profiling
+                (<code>clinic.js</code>) to identify and fix it.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Downtime</strong>
+            <ul>
+              <li>
+                Task: Simulate a crash (e.g., DB disconnect). Implement retry
+                logic and test recovery.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 4: Scale & Deploy</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://aws.amazon.com/architecture/" target="_blank"
+                  >AWS Well-Architected Framework</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Load Test</strong>
+            <ul>
+              <li>
+                Task: Use <code>autocannon</code> to simulate 10k users.
+                Optimize with clustering or caching.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Full Deployment</strong>
+            <ul>
+              <li>
+                Task: Deploy to AWS with Docker, CI/CD, and monitoring (PM2 or
+                CloudWatch).
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Milestones</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            <strong>End of Week 2:</strong> Build a feature-complete app with
+            tests.
+          </li>
+          <li>
+            <strong>End of Week 4:</strong> Deploy a scalable, resilient system.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Resources</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            <a href="https://www.atlassian.com/agile" target="_blank"
+              >Atlassian Agile Guides</a
+            >
+          </li>
+          <li>Book: <em>The Art of Scalability</em> by Martin L. Abbott</li>
+          <li>YouTube: “System Design Interview” channel</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      function toggleSection(element) {
+        const content = element.nextElementSibling;
+        content.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

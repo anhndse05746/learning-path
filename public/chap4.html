@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Step 4: Level Up Testing</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #2980b9;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      h2:hover {
+        color: #3498db;
+      }
+      h3 {
+        color: #7f8c8d;
+      }
+      p,
+      ul {
+        margin: 10px 0;
+      }
+      code {
+        background-color: #f0f0f0;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9em;
+        color: #e83e8c;
+      }
+      pre {
+        background-color: #282c34;
+        color: #abb2bf;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 15px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+      pre code {
+        background-color: transparent;
+        padding: 0;
+        color: inherit;
+        font-size: inherit;
+        border-radius: 0;
+      }
+      .section {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .collapsible {
+        display: none;
+      }
+      .collapsible.active {
+        display: block;
+      }
+      a {
+        color: #3498db;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Step 4: Level Up Testing</h1>
+
+    <div class="section">
+      <h2>Goal</h2>
+      <p>
+        Write comprehensive, reliable tests to ensure production-ready code.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Duration</h2>
+      <p>4 weeks (assuming 2-3 hours/day, 5 days/week)</p>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Theory (What to Learn)</h2>
+      <div class="collapsible">
+        <ol>
+          <li>
+            <strong>Testing Types</strong>
+            <ul>
+              <li>Unit tests: Individual functions/modules.</li>
+              <li>Integration tests: Combined components.</li>
+              <li>End-to-end (E2E) tests: Full workflows.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Testing Frameworks</strong>
+            <ul>
+              <li>Jest for unit/integration testing.</li>
+              <li>Supertest for API testing.</li>
+              <li>Mocking dependencies.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Test-Driven Development (TDD)</strong>
+            <ul>
+              <li>Write tests first, then code.</li>
+              <li>Red-Green-Refactor cycle.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Hands-On Practice Plan</h2>
+      <div class="collapsible">
+        <h3>Week 1: Unit Testing Basics</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://jestjs.io/docs/getting-started" target="_blank"
+                  >Jest Getting Started</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Simple Unit Tests</strong>
+            <ul>
+              <li>
+                Task: Write unit tests for a utility module (e.g., math
+                functions) using Jest.
+              </li>
+              <li>
+                Example:
+                <pre><code>// math.js
+function add(a, b) { return a + b; }
+module.exports = { add };
+
+// math.test.js
+const { add } = require('./math');
+test('adds 1 + 2 to equal 3', () => {
+  expect(add(1, 2)).toBe(3);
+});</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Mocking</strong>
+            <ul>
+              <li>
+                Task: Test a function that calls an external API by mocking the
+                API response with Jest.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 2: Integration Testing</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a
+                  href="https://github.com/visionmedia/supertest"
+                  target="_blank"
+                  >Supertest Docs</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - API Tests</strong>
+            <ul>
+              <li>
+                Task: Write integration tests for a Node.js API (e.g.,
+                <code>GET /users</code>) using Supertest.
+              </li>
+              <li>
+                Example:
+                <pre><code>const request = require('supertest');
+const app = require('./app');
+describe('GET /users', () => {
+  it('responds with json', async () => {
+    const res = await request(app).get('/users');
+    expect(res.status).toBe(200);
+    expect(res.body).toHaveProperty('users');
+  });
+});</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Database Integration</strong>
+            <ul>
+              <li>
+                Task: Test API endpoints with a real database (e.g., MongoDB).
+                Use setup/teardown to reset data.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 3: TDD Practice</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>Watch: “TDD Basics” by Kent C. Dodds (YouTube)</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - TDD Feature</strong>
+            <ul>
+              <li>
+                Task: Use TDD to build a user registration endpoint (write tests
+                first).
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Refactor</strong>
+            <ul>
+              <li>
+                Task: Refactor an existing untested module, add tests, and
+                ensure 80% coverage (use <code>jest --coverage</code>).
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 4: Advanced Testing</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a
+                  href="https://jestjs.io/docs/testing-frameworks"
+                  target="_blank"
+                  >Jest Advanced Features</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Edge Cases</strong>
+            <ul>
+              <li>
+                Task: Add tests for edge cases (e.g., invalid input, timeouts)
+                in your API.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - E2E Testing</strong>
+            <ul>
+              <li>
+                Task: Write an E2E test for a full workflow (e.g., register →
+                login → get user) using Supertest or a tool like Cypress.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Milestones</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            <strong>End of Week 2:</strong> Write reliable unit and integration
+            tests for a small app.
+          </li>
+          <li>
+            <strong>End of Week 4:</strong> Achieve 80% test coverage with TDD
+            and E2E tests.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Resources</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            <a href="https://jestjs.io/" target="_blank">Jest Documentation</a>
+          </li>
+          <li>
+            <a href="https://testingjavascript.com/" target="_blank"
+              >Testing JavaScript by Kent C. Dodds</a
+            >
+          </li>
+          <li>YouTube: “The Net Ninja” Jest tutorials</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      function toggleSection(element) {
+        const content = element.nextElementSibling;
+        content.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

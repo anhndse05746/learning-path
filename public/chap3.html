@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Step 3: Enhance Problem-Solving</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #2980b9;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      h2:hover {
+        color: #3498db;
+      }
+      h3 {
+        color: #7f8c8d;
+      }
+      p,
+      ul {
+        margin: 10px 0;
+      }
+      code {
+        background-color: #f0f0f0;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9em;
+        color: #e83e8c;
+      }
+      pre {
+        background-color: #282c34;
+        color: #abb2bf;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 15px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+      pre code {
+        background-color: transparent;
+        padding: 0;
+        color: inherit;
+        font-size: inherit;
+        border-radius: 0;
+      }
+      .section {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .collapsible {
+        display: none;
+      }
+      .collapsible.active {
+        display: block;
+      }
+      a {
+        color: #3498db;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Step 3: Enhance Problem-Solving</h1>
+
+    <div class="section">
+      <h2>Goal</h2>
+      <p>
+        Tackle complex, production-like issues efficiently with optimized
+        solutions.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Duration</h2>
+      <p>4 weeks (assuming 2-3 hours/day, 5 days/week)</p>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Theory (What to Learn)</h2>
+      <div class="collapsible">
+        <ol>
+          <li>
+            <strong>Algorithmic Thinking</strong>
+            <ul>
+              <li>Time and space complexity analysis (Big-O notation).</li>
+              <li>Data structures: Arrays, Linked Lists, Trees, Hash Maps.</li>
+              <li>Common patterns: Two-pointer, Sliding Window, Recursion.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Debugging Techniques</strong>
+            <ul>
+              <li>
+                Profiling Node.js apps (e.g., <code>clinic.js</code>,
+                <code>node --inspect</code>).
+              </li>
+              <li>Identifying memory leaks and race conditions.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Optimization Strategies</strong>
+            <ul>
+              <li>Caching, lazy loading, and memoization.</li>
+              <li>Parallel processing with Worker Threads.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Hands-On Practice Plan</h2>
+      <div class="collapsible">
+        <h3>Week 1: Algorithm Basics</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a href="https://www.bigocheatsheet.com/" target="_blank"
+                  >Big-O Cheat Sheet</a
+                >
+              </li>
+              <li>
+                Watch: “Data Structures Easy to Advanced” by freeCodeCamp
+                (YouTube, first hour)
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Coding Problems</strong>
+            <ul>
+              <li>
+                Task: Solve 5 LeetCode Easy problems in JavaScript (e.g., “Two
+                Sum”, “Reverse Linked List”). Analyze time/space complexity.
+              </li>
+              <li>
+                Example (<code>Two Sum</code>):
+                <pre><code>function twoSum(nums, target) {
+  const map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    if (map.has(complement)) return [map.get(complement), i];
+    map.set(nums[i], i);
+  }
+  return [];
+}</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Medium Problems</strong>
+            <ul>
+              <li>
+                Task: Solve 3 LeetCode Medium problems (e.g., “Longest Substring
+                Without Repeating Characters”). Optimize your solutions.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 2: Debugging</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a
+                  href="https://nodejs.org/en/docs/guides/diagnostics/"
+                  target="_blank"
+                  >Node.js Diagnostics Guide</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Memory Leak</strong>
+            <ul>
+              <li>
+                Task: Create a Node.js script with a memory leak (e.g., array
+                growing indefinitely). Use <code>node --inspect</code> and
+                Chrome DevTools to find and fix it.
+              </li>
+              <li>
+                Example (Leaky):
+                <pre><code>let arr = [];
+setInterval(() => {
+  arr.push(new Array(10000).fill('leak'));
+}, 1000);</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Race Condition</strong>
+            <ul>
+              <li>
+                Task: Write an async script with a race condition (e.g.,
+                multiple writes to a file). Debug and fix using promises or
+                locks.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 3: Optimization</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>
+                Read:
+                <a
+                  href="https://nodejs.org/api/worker_threads.html"
+                  target="_blank"
+                  >Node.js Worker Threads Docs</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Memoization</strong>
+            <ul>
+              <li>
+                Task: Implement a memoized Fibonacci function in Node.js.
+                Compare performance with a non-memoized version.
+              </li>
+              <li>
+                Example:
+                <pre><code>function memoize(fn) {
+  const cache = new Map();
+  return function (...args) {
+    const key = args.join(',');
+    if (cache.has(key)) return cache.get(key);
+    const result = fn(...args);
+    cache.set(key, result);
+    return result;
+  };
+}
+const fib = memoize((n) => n <= 1 ? n : fib(n-1) + fib(n-2));</code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Worker Threads</strong>
+            <ul>
+              <li>
+                Task: Offload a CPU-intensive task (e.g., image resizing
+                simulation) to a Worker Thread. Measure speedup.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Week 4: Real-World Challenges</h3>
+        <ul>
+          <li>
+            <strong>Day 1: Theory</strong>
+            <ul>
+              <li>Review: LeetCode Hard problem explanations</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 2-3: Exercise 1 - Hard Problem</strong>
+            <ul>
+              <li>
+                Task: Solve 1 LeetCode Hard problem (e.g., “Median of Two Sorted
+                Arrays”). Break it down step-by-step.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Day 4-5: Exercise 2 - Production Bug</strong>
+            <ul>
+              <li>
+                Task: Clone an open-source Node.js project (e.g.,
+                <a
+                  href="https://github.com/goldbergyoni/nodebestpractices"
+                  target="_blank"
+                  >nodebestpractices</a
+                >), introduce a bug (e.g., slow endpoint), and fix it with
+                profiling.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Milestones</h2>
+      <div class="collapsible">
+        <ul>
+          <li>
+            <strong>End of Week 2:</strong> Solve medium problems and debug
+            basic issues in 30 minutes.
+          </li>
+          <li>
+            <strong>End of Week 4:</strong> Tackle hard problems and
+            production-like bugs with confidence.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 onclick="toggleSection(this)">Resources</h2>
+      <div class="collapsible">
+        <ul>
+          <li><a href="https://leetcode.com/" target="_blank">LeetCode</a></li>
+          <li>
+            Book: <em>Cracking the Coding Interview</em> by Gayle Laakmann
+            McDowell
+          </li>
+          <li>YouTube: “NeetCode” channel for problem-solving walkthroughs</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      function toggleSection(element) {
+        const content = element.nextElementSibling;
+        content.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
